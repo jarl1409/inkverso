@@ -1,0 +1,4 @@
+{"_id":{"$oid":"6807664e60e75289686cdcdd"},"nombre":"Jhosep Andrey","apellido":"Rodriguez Lopez","empresa":"Pinturas del Meta","email":"jhosepandrey203@hotmail.com","telefono":"3112472118","__v":0}
+{"_id":{"$oid":"68187a3cc2f8408c22a402f9"},"nombre":"Herminia","apellido":"Lopez","empresa":"El Manantial","email":"correo1@correo.com","telefono":"3208103123","__v":0}
+{"_id":{"$oid":"68187a59c2f8408c22a402fd"},"nombre":"William","apellido":"Rodriguez","empresa":"El Manantial","email":"correo2@correo.com","telefono":"3208103123","__v":0}
+{"_id":{"$oid":"6819cb9679a50867a0218a64"},"nombre":"Jhosep Andrey","apellido":"Rodriguez Lopez","empresa":"Pinturas del Meta","email":"jhosepandrey13@hotmail.com","telefono":"3112472118","__v":0}
