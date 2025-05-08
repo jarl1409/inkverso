@@ -1,6 +1,6 @@
 // /cursos/Node.js---Bootcamp-Desarrollo-Web-inc.-MVC-y-REST-APIs/restapis/controllers/clienteController.js
 
-const Clientes = require("../models/clientes");
+const Clientes = require("../models/user");
 
 exports.nuevoCliente = async (req, res) => {
   try {
