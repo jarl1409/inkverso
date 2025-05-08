@@ -1,6 +1,6 @@
 # Inkverso
 
-Este documento detalla las adaptaciones realizadas al proyecto previo de CRUD para ajustarlo a los requisitos de Inkverso. A continuación se presenta una tabla que resume qué archivos se refactorizaron, cuáles quedaron obsoletos y qué nuevos archivos se incorporan. Durante la llamada de sustentación, explicaré brevemente cada cambio sin redundar.
+Este documento detalla las adaptaciones a realizar al proyecto previo de CRUD para ajustarlo a los requisitos de Inkverso. A continuación se presenta una tabla que resume qué archivos se refactorizaron, cuáles quedaron obsoletos y qué nuevos archivos se incorporan. Durante la llamada de sustentación, explicaré brevemente cada cambio sin redundar.
 
 | Archivo existente     | Ruta existente                            | Descripción existente                      | Acción       | Archivo nuevo       | Ruta nuevo                 | Descripción nuevo                                            |
 | --------------------- | ----------------------------------------- | ------------------------------------------ | ------------ | ------------------- | -------------------------- | ------------------------------------------------------------ |
