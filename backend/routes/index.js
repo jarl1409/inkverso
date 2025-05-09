@@ -1,10 +1,10 @@
-// /cursos/Node.js---Bootcamp-Desarrollo-Web-inc.-MVC-y-REST-APIs/restapis/routes/index.js
+// /home/jarl1409/proyectos/inkverso/backend/routes/index.js
 
 const express = require("express");
 const router = express.Router();
 
 const userController = require("../controllers/userController");
-const productoController = require("../controllers/productoController");
+const bookController = require("../controllers/bookController");
 const pedidosController = require("../controllers/pedidosController");
 
 const auth = require("../middleware/auth");
@@ -17,43 +17,43 @@ router.put("/users/:id", auth, userController.updateUser);
 router.delete("/users/:id", auth, userController.deleteUser);
 
 /**
- * Rutas para productos
+ * Rutas para books
  */
 
-// Agregar producto
+// Agregar books
 router.post(
-  "/productos",
+  "/books",
   auth,
-  productoController.subirArchivo,
-  productoController.nuevoProducto
+  bookController.uploadCover,
+  bookController.createBook
 );
 
-// Mostrar productos
-router.get("/productos", auth, productoController.mostrarProductos);
+// Mostrar books
+router.get("/books", auth, bookController.getBooks);
 
-// Mostrar productos por ID
-router.get("/productos/:idProducto", auth, productoController.mostrarProducto);
+// Mostrar book por ID
+router.get("/books/:id", auth, bookController.getBookById);
 
-//  Actualizar productos por id
+//  Actualizar book por id
 router.put(
-  "/productos/:idProducto",
+  "/books/:id",
   auth,
-  productoController.subirArchivo,
-  productoController.actualizarProducto
+  bookController.uploadCover,
+  bookController.updateBook
 );
 
-// Eliminar productos
+// Eliminar book
 router.delete(
-  "/productos/:idProducto",
+  "/books/:id",
   auth,
-  productoController.eliminarProducto
+  bookController.deleteBook
 );
 
-// Busqueda de productos
+// Busqueda de book
 router.post(
-  "/productos/busqueda/:query",
+  "/books/busqueda/:query",
   auth,
-  productoController.buscarProducto
+  bookController.searchBook
 );
 
 // Pedidos
