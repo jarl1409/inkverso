@@ -1,0 +1,68 @@
+# === GLOBAL ===
+.DS_Store
+Thumbs.db
+*.log
+*.sublime*
+*.backup.*
+*.back.*
+*.psd
+*.sketch
+
+# Archivos de entorno
+.env
+.env.*.local
+.env.local
+.vscode/
+*.tgz
+
+# Archivos de caché generales
+.cache/
+.parcel-cache
+.nyc_output/
+.pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.json
+
+# === FRONTEND ===
+/frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/.svelte-kit/
+frontend/.turbo/
+frontend/.docusaurus/
+frontend/.rpt2_cache/
+frontend/.rts2_cache_*
+frontend/.eslintcache
+frontend/.stylelintcache
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/public/assets/ # si luego pones imágenes que no quieras versionar
+
+# === BACKEND ===
+/backend/node_modules/
+backend/dist/
+backend/build/
+backend/.eslintcache
+backend/.stylelintcache
+backend/coverage/
+backend/*.tsbuildinfo
+backend/*.sqlite # por si llegas a usar SQLite
+backend/seeds/
+backend/backups/
+backend/tmp/
+backend/logs/
+backend/*.log
+
+# === VERCEL ===
+.vercel/
+
+# === NPM / YARN / PNPM ===
+package-lock.json
+yarn.lock
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
