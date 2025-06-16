@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+import Login from './pages/Login'
+
 function App() {
   return (
     <>
-      <h1 className="text-5xl">Hola</h1>
+    <Login/>
     </>
   );
 }
