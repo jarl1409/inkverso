@@ -6,10 +6,16 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+  const isFormValid =
+    email.trim() !== "" &&
+    password.trim() !== "" &&
+    confirmPassword.trim() !== "" &&
+    password === confirmPassword;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden.");
+    if (!isFormValid) {
+      setError("Por favor, completa todos los campos correctamente.");
       return;
     }
 
@@ -81,12 +87,12 @@ export default function Register() {
 
                 <button
                   type="submit"
-                  disabled={!email || !password || password !== confirmPassword}
-                  className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 ${
-                    password !== confirmPassword
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
-                  }`}
+                  disabled={!isFormValid}
+                  className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition ${
+                  isFormValid
+                    ? "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
+                    : "bg-gray-400 cursor-not-allowed"
+                }`}
                 >
                   Registrarme
                 </button>
