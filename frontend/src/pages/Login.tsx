@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Previene el comportamiento por defecto del form
+    // Aquí puedes hacer validaciones o llamadas a API si deseas
+    navigate("/"); // o "/index" si así configuraste esa ruta
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1">
@@ -19,7 +27,11 @@ export default function Login() {
 
             <div className="mt-10">
               <div>
-                <form action="#" method="POST" className="space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  method="POST"
+                  className="space-y-6"
+                >
                   <div>
                     <label
                       htmlFor="email"
