@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const isFormValid =
     email.trim() !== "" &&
@@ -22,6 +24,8 @@ export default function Register() {
     setError("");
     // Aquí puedes manejar el registro con fetch o axios
     console.log("Registrando:", { email, password });
+
+    navigate("/login");
   };
 
   return (
@@ -89,10 +93,10 @@ export default function Register() {
                   type="submit"
                   disabled={!isFormValid}
                   className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition ${
-                  isFormValid
-                    ? "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
-                    : "bg-gray-400 cursor-not-allowed"
-                }`}
+                    isFormValid
+                      ? "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
+                      : "bg-gray-400 cursor-not-allowed"
+                  }`}
                 >
                   Registrarme
                 </button>

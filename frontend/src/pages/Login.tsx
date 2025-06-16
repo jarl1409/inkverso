@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
     <>
@@ -157,12 +159,12 @@ export default function Login() {
                 <hr className="my-6 border-t border-gray-200" />
 
                 <div>
-                  <button
-                    type="submit"
+                  <Link
+                    to="/register"
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Registrarme Ahora
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
