@@ -1,4 +1,3 @@
-// src/components/LibrosGrid.tsx
 import React, { useState } from "react";
 import {
   ArrowLongLeftIcon,
@@ -28,7 +27,6 @@ const LibrosGrid: React.FC<Props> = ({ books, perPage = 24 }) => {
 
   return (
     <div>
-      {/* Grid de libros */}
       <div className="bg-white">
         <div className="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8">
           <h2 className="sr-only">Libros</h2>
@@ -65,7 +63,7 @@ const LibrosGrid: React.FC<Props> = ({ books, perPage = 24 }) => {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6">
-        {/* Paginación conectada */}
+        {/* Paginación */}
         <nav
           aria-label="Paginación de libros"
           className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 mt-6"

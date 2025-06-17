@@ -9,6 +9,10 @@ import {
   Bars3Icon,
   ShoppingBagIcon,
   XMarkIcon,
+  Cog6ToothIcon,
+  ClockIcon,
+  BookOpenIcon,
+  ArchiveBoxIcon,
 } from "@heroicons/react/24/outline";
 
 import BookGrid from "../components/LibrosGrid";
@@ -19,10 +23,10 @@ import type { Book } from "../types/Book";
 
 const navigation = {
   pages: [
-    { name: "Configuración", href: "/" },
-    { name: "Historial de Compras", href: "/" },
-    { name: "Mis libros", href: "/" },
-    { name: "Libros", href: "/" },
+    { name: "Configuración", href: "/", Icon: Cog6ToothIcon },
+    { name: "Historial de Compras", href: "/", Icon: ClockIcon },
+    { name: "Mis libros", href: "/", Icon: BookOpenIcon },
+    { name: "Libros", href: "/", Icon: ArchiveBoxIcon },
   ],
 };
 
@@ -110,7 +114,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
-  },{
+  },
+  {
     id: 13,
     title: "Organize Phone Holder",
     author: "Acme Inc.",
@@ -130,7 +135,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
-  },{
+  },
+  {
     id: 16,
     title: "Organize Phone Holder",
     author: "Acme Inc.",
@@ -150,7 +156,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
-  },{
+  },
+  {
     id: 19,
     title: "Organize Phone Holder",
     author: "Acme Inc.",
@@ -170,7 +177,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
-  },{
+  },
+  {
     id: 22,
     title: "Organize Phone Holder",
     author: "Acme Inc.",
@@ -253,7 +261,7 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
-  }
+  },
 ];
 
 export default function Index() {
@@ -318,16 +326,20 @@ export default function Index() {
             </div>
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-              {navigation.pages.map((page) => (
-                <div key={page.name} className="flow-root">
-                  <a
-                    href={page.href}
-                    className="-m-2 block p-2 font-medium text-gray-900"
-                  >
-                    {page.name}
-                  </a>
-                </div>
-              ))}
+              {navigation.pages.map((page) => {
+                const Icon = page.Icon;
+                return (
+                  <div key={page.name} className="flow-root">
+                    <a
+                      href={page.href}
+                      className="-m-2 flex items-center p-2 font-medium text-gray-900"
+                    >
+                      <Icon className="h-5 w-5 mr-2" aria-hidden="true" />
+                      <span>{page.name}</span>
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           </DialogPanel>
         </div>
@@ -373,15 +385,22 @@ export default function Index() {
                       {/* Flyout menus */}
                       <PopoverGroup className="inset-x-0 bottom-0 px-4">
                         <div className="flex h-full justify-center space-x-8">
-                          {navigation.pages.map((page) => (
-                            <a
-                              key={page.name}
-                              href={page.href}
-                              className="flex items-center text-sm font-medium text-white"
-                            >
-                              {page.name}
-                            </a>
-                          ))}
+                          {navigation.pages.map((page) => {
+                            const Icon = page.Icon;
+                            return (
+                              <a
+                                key={page.name}
+                                href={page.href}
+                                className="flex items-center text-sm font-medium text-white hover:text-indigo-300"
+                              >
+                                <Icon
+                                  className="h-5 w-5 mr-1"
+                                  aria-hidden="true"
+                                />
+                                {page.name}
+                              </a>
+                            );
+                          })}
                         </div>
                       </PopoverGroup>
                     </div>
@@ -449,11 +468,13 @@ export default function Index() {
           </div>
         </div>
       </div>
-        <div className="bg-yellow-600">
-            <h2 className="font-bold text-4xl text-center text-white py-5">Libros Disponibles</h2>
-        </div>
+      <div className="bg-yellow-600">
+        <h2 className="font-bold text-4xl text-center text-white py-5">
+          Libros Disponibles
+        </h2>
+      </div>
 
-      <main className="py-8">
+      <main className="pb-10">
         {loading ? <Spinner /> : <BookGrid books={books} perPage={24} />}
       </main>
 
