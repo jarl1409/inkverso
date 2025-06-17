@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useLocation } from "react-router-dom";
 import {
   Dialog,
   DialogBackdrop,
@@ -23,9 +24,9 @@ import type { Book } from "../types/Book";
 
 const navigation = {
   pages: [
-    { name: "Configuración", href: "/", Icon: Cog6ToothIcon },
-    { name: "Historial de Compras", href: "/", Icon: ClockIcon },
-    { name: "Mis libros", href: "/", Icon: BookOpenIcon },
+    { name: "Configuración", href: "/configuracion", Icon: Cog6ToothIcon },
+    { name: "Historial de Compras", href: "/historial", Icon: ClockIcon },
+    { name: "Mis libros", href: "/mis-libros", Icon: BookOpenIcon },
     { name: "Libros", href: "/", Icon: ArchiveBoxIcon },
   ],
 };
@@ -265,7 +266,12 @@ const mockBooks: Book[] = [
 ];
 
 export default function Index() {
+  const { pathname } = useLocation();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // filtramos el que coincide con la ruta actual
+  const visiblePages = navigation.pages.filter((p) => p.href !== pathname);
 
   // Estado de libros
   const [books] = useState<Book[]>(mockBooks);
@@ -326,7 +332,7 @@ export default function Index() {
             </div>
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-              {navigation.pages.map((page) => {
+              {visiblePages.map((page) => {
                 const Icon = page.Icon;
                 return (
                   <div key={page.name} className="flow-root">
@@ -385,7 +391,7 @@ export default function Index() {
                       {/* Flyout menus */}
                       <PopoverGroup className="inset-x-0 bottom-0 px-4">
                         <div className="flex h-full justify-center space-x-8">
-                          {navigation.pages.map((page) => {
+                          {visiblePages.map((page) => {
                             const Icon = page.Icon;
                             return (
                               <a
@@ -467,11 +473,6 @@ export default function Index() {
             </h3>
           </div>
         </div>
-      </div>
-      <div className="bg-yellow-600">
-        <h2 className="font-bold text-4xl text-center text-white py-5">
-          Libros Disponibles
-        </h2>
       </div>
 
       <main className="pb-10">
