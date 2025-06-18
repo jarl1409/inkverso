@@ -16,6 +16,8 @@ export interface NavPage {
 
 interface NavbarProps {
   pages: NavPage[];
+  mobileMenuOpen: boolean;
+  setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Navbar({ pages }: NavbarProps) {
@@ -68,7 +70,6 @@ export default function Navbar({ pages }: NavbarProps) {
               <Bars3Icon className="h-6 w-6" aria-hidden />
             </button>
 
-            
             <div className="flex justify-center lg:justify-start items-center">
               <Link to="/" className="flex items-center space-x-2">
                 <img
