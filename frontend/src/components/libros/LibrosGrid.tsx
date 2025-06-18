@@ -3,7 +3,7 @@ import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
 } from "@heroicons/react/20/solid";
-import type { Book } from "../types/Book";
+import type { Book } from "../../types/Book";
 
 interface Props {
   books: Book[];

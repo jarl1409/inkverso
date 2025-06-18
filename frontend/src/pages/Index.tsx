@@ -16,8 +16,8 @@ import {
   ArchiveBoxIcon,
 } from "@heroicons/react/24/outline";
 
-import BookGrid from "../components/LibrosGrid";
-import Spinner from "../components/spinner";
+import BookGrid from "../components/libros/LibrosGrid";
+import Spinner from "../components/layout/Spinner";
 import type { Book } from "../types/Book";
 // import { CRMContext } from "../context/CRMContext";
 // import clienteAxios from "../config/axios";
