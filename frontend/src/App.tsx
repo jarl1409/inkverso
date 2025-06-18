@@ -1,16 +1,28 @@
-import { Routes, Route } from "react-router-dom";
+// src/App.tsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Home from "./pages/Home";
+import Configuracion from "./pages/Configuracion";
+import Historial from "./pages/Historial";
+import MisLibros from "./pages/admin/MisLibros";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Index from "./pages/Index"
-function App() {
+
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Index/>} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/register" element={<Register/>} />
-      <Route path="*" element={"Pagina no encontrada"} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="configuracion" element={<Configuracion />} />
+          <Route path="historial" element={<Historial />} />
+          <Route path="mis-libros" element={<MisLibros />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

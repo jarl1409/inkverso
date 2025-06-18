@@ -1,23 +1,8 @@
-// src/pages/Index.tsx
+// src/pages/Home.tsx
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import Navbar, { type NavPage } from "../components/layout/Navbar";
 import BookGrid from "../components/libros/LibrosGrid";
 import Spinner from "../components/ui/Spinner";
 import type { Book } from "../types/Book";
-import {
-  Cog6ToothIcon,
-  ClockIcon,
-  BookOpenIcon,
-  ArchiveBoxIcon,
-} from "@heroicons/react/24/outline";
-
-const navigation: NavPage[] = [
-  { name: "Configuración", href: "/configuracion", Icon: Cog6ToothIcon },
-  { name: "Historial de Compras", href: "/historial", Icon: ClockIcon },
-  { name: "Mis libros", href: "/mis-libros", Icon: BookOpenIcon },
-  { name: "Libros", href: "/", Icon: ArchiveBoxIcon },
-];
 
 const mockBooks: Book[] = [
   {
@@ -253,50 +238,39 @@ const mockBooks: Book[] = [
   },
 ];
 
-export default function Index() {
-  const { pathname } = useLocation();
+export default function Home() {
   const [books] = useState<Book[]>(mockBooks);
   const loading = books.length === 0;
 
-  // Sólo pasamos las páginas que no coinciden con la ruta actual
-  const pagesToShow = navigation.filter((p) => p.href !== pathname);
-
   return (
-    <div className="bg-white min-h-screen">
-      <header>
-        {/* Hero */}
-        <div className="relative bg-gray-900">
-          <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-            <img
-              src="/images/HeroImage.png"
-              className="w-full h-full object-cover"
-              alt=""
-            />
-          </div>
+    <>
+      {/* Hero */}
+      <header className="relative bg-gray-900">
+        <div aria-hidden className="absolute inset-0 overflow-hidden">
+          <img
+            src="/images/HeroImage.png"
+            className="w-full h-full object-cover"
+            alt=""
+          />
           <div className="absolute inset-0 bg-gray-900 opacity-50" />
-
-          <Navbar pages={pagesToShow} />
-
-          <div className="relative px-6 py-10 text-center sm:text-left lg:px-0">
-            <div className="mx-auto flex max-w-5xl flex-col sm:flex-row items-center gap-6">
-              <img
-                src="/images/logoInkverso.png"
-                alt="Logo Inkverso Decorado"
-                className="h-56 w-auto lg:h-[400px]"
-              />
-              <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-extralight leading-snug lg:max-w-2xl">
-                Somos una{" "}
-                <strong className="font-bold">tienda de libros</strong> que
-                busca adaptarse a los nuevos hábitos de consumo digital.
-              </h3>
-            </div>
-          </div>
+        </div>
+        <div className="relative px-6 py-10 text-center sm:text-left max-w-5xl mx-auto flex flex-col sm:flex-row items-center gap-6">
+          <img
+            src="/images/logoInkverso.png"
+            alt="Logo Inkverso"
+            className="h-56 w-auto lg:h-[400px]"
+          />
+          <h1 className="text-white text-3xl lg:text-4xl font-extralight">
+            Somos una <strong className="font-bold">tienda de libros</strong>{" "}
+            que se adapta al consumo digital.
+          </h1>
         </div>
       </header>
 
-      <main className="pb-10">
+      {/* Grid de Libros */}
+      <section className="pb-10">
         {loading ? <Spinner /> : <BookGrid books={books} perPage={24} />}
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
