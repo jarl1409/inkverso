@@ -1,4 +1,3 @@
-// src/pages/admin/MisLibros.tsx
 import ItemMiLibro, { type Order } from "../../components/libros/ItemMiLibro";
 
 import { BookOpenIcon } from "@heroicons/react/24/outline";

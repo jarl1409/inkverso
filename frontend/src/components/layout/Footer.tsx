@@ -1,4 +1,3 @@
-// /home/jarl1409/proyectos/proyectoInkverso/frontend/src/components/layout/Footer.tsx
 export default function Footer() {
   return (
     <div>

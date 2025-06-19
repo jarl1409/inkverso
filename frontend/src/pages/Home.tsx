@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import { useState } from "react";
 import LibrosGrid from "../components/libros/LibrosGrid";
 import Spinner from "../components/ui/Spinner";

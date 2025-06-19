@@ -1,4 +1,3 @@
-// src/pages/Index.tsx
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar, { type NavPage } from "../components/layout/Navbar";

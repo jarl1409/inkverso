@@ -1,4 +1,3 @@
-// src/pages/admin/CrearLibro.tsx
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

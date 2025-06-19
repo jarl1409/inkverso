@@ -1,5 +1,4 @@
-// src/components/libros/FormLibro.tsx
-// src/components/libros/FormLibro.tsx
+
 import type { ChangeEvent, FormEvent } from "react";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 import type { Book } from "../../types/Book";

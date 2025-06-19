@@ -1,4 +1,3 @@
-// src/pages/admin/EditarLibro.tsx
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";

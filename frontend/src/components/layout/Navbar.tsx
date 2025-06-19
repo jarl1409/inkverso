@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.tsx
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";

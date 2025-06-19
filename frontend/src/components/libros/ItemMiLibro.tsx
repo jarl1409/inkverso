@@ -1,4 +1,4 @@
-// src/components/libros/ItemMiLibro.tsx
+
 import { Link } from "react-router-dom";
 import type { Book } from "../../types/Book";
 
