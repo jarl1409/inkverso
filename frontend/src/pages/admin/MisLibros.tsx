@@ -1,6 +1,8 @@
 // src/pages/admin/MisLibros.tsx
 import ItemMiLibro, { type Order } from "../../components/libros/ItemMiLibro";
 
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+
 const orders: Order[] = [
   {
     number: "WU88191111",
@@ -33,11 +35,16 @@ const stats = [
 export default function MisLibros() {
   return (
     <>
-
-    <div>
-      <h1>Mis libros</h1>
-      <button>Publicar Libro</button>
-    </div>
+      <div>
+        <BookOpenIcon className="w-5 h-5 " />
+        <h1> Mis libros</h1>
+        <button
+          type="submit"
+          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Acceder
+        </button>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h3 className=" text-base font-semibold text-gray-900">Last 30 days</h3>
         <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
