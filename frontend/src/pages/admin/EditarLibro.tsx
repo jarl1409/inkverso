@@ -24,11 +24,11 @@ export default function EditarLibro() {
   useEffect(() => {
     if (!id) return;
     fetch(`/api/libros/${id}`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data: Book) => {
         setBook(data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("No se pudo cargar el libro:", err);
       })
       .finally(() => {
@@ -38,7 +38,7 @@ export default function EditarLibro() {
 
   // Callback para actualizar cada campo
   const handleChange = (field: keyof Book, value: string | number) => {
-    setBook(prev => ({ ...prev, [field]: value }));
+    setBook((prev) => ({ ...prev, [field]: value }));
   };
 
   // Callback para actualizar la portada (subida de archivo)
@@ -49,6 +49,9 @@ export default function EditarLibro() {
     handleChange("coverUrl", fakeUrl);
   };
 
+  // Estado de si se envia o no
+  const [submitting, setSubmitting] = useState(false);
+
   // Al enviar el formulario, hacemos PUT a la API
   const handleSubmit = () => {
     fetch(`/api/libros/${id}`, {
@@ -56,13 +59,14 @@ export default function EditarLibro() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(book),
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) throw new Error("Error actualizando");
         navigate("/mis-libros");
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error guardando:", err);
-      });
+      })
+      .finally(() => setSubmitting(false));
   };
 
   if (loading) {
@@ -83,6 +87,7 @@ export default function EditarLibro() {
         onChange={handleChange}
         onFileChange={handleFile}
         onSubmit={handleSubmit}
+        disabled={submitting}
       />
     </div>
   );

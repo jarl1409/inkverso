@@ -9,6 +9,7 @@ export interface FormLibroProps {
   onChange: (field: keyof Book, value: string | number) => void;
   onFileChange: (file: File) => void;
   onSubmit: () => void;
+  disabled: boolean;
 }
 
 export default function FormLibro({
@@ -17,7 +18,9 @@ export default function FormLibro({
   onFileChange,
   onSubmit,
 }: FormLibroProps) {
-  const handleInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInput = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     // para price conviertes a número si quieres
     onChange(name as keyof Book, name === "price" ? Number(value) : value);
@@ -40,11 +43,14 @@ export default function FormLibro({
         {/* Datos del libro */}
         <div className="mt-10 space-y-8 border-b border-gray-900/10 pb-12">
           {/* Título */}
-          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
-            <label htmlFor="title" className="block text-sm font-medium text-gray-900 sm:pt-1.5">
+          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6 sm:border-b border-gray-900/10 pb-12">
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-gray-900 sm:pt-1.5"
+            >
               Nombre Libro
             </label>
-            <div className="mt-2 sm:col-span-2 sm:mt-0">
+            <div className="flex items-center rounded-md bg-white  outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 sm:max-w-md">
               <input
                 id="title"
                 name="title"
@@ -57,11 +63,14 @@ export default function FormLibro({
           </div>
 
           {/* Descripción */}
-          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
-            <label htmlFor="description" className="block text-sm font-medium text-gray-900 sm:pt-1.5">
+          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6 sm:border-b border-gray-900/10 pb-12">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-900 sm:pt-1.5"
+            >
               Sinopsis
             </label>
-            <div className="mt-2 sm:col-span-2 sm:mt-0">
+            <div className="flex items-center rounded-md bg-white  outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 sm:max-w-md">
               <textarea
                 id="description"
                 name="description"
@@ -74,14 +83,20 @@ export default function FormLibro({
           </div>
 
           {/* Portada */}
-          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
-            <label htmlFor="cover" className="block text-sm font-medium text-gray-900 sm:pt-1.5">
+          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6 sm:border-b border-gray-900/10 pb-12">
+            <label
+              htmlFor="cover"
+              className="block text-sm font-medium text-gray-900 sm:pt-1.5"
+            >
               Portada Libro
             </label>
-            <div className="mt-2 sm:col-span-2 sm:mt-0">
-              <div className="flex justify-center rounded-lg border-2 border-dashed border-gray-300 px-6 py-10">
-                <PhotoIcon className="h-12 w-12 text-gray-300" aria-hidden="true" />
-                <div className="mt-4 text-sm text-gray-600">
+            <div className="mt-auto sm:col-span-2 sm:mt-0">
+              <div className=" w-full max-w-xs flex justify-center rounded-lg border-2 border-dashed border-gray-300  px-6 py-10">
+                <PhotoIcon
+                  className="h-12 w-12 text-gray-300"
+                  aria-hidden="true"
+                />
+                <div className="mt-2 text-sm text-gray-600">
                   <label
                     htmlFor="file-upload"
                     className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500"
@@ -104,18 +119,34 @@ export default function FormLibro({
 
           {/* Precio */}
           <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
-            <label htmlFor="price" className="block text-sm font-medium text-gray-900 sm:pt-1.5">
+            <label
+              htmlFor="price"
+              className="block text-sm font-medium text-gray-900 sm:pt-1.5"
+            >
               Precio
             </label>
-            <div className="mt-2 sm:col-span-2 sm:mt-0 flex items-center">
-              <span className="mr-2">$</span>
+            <div className="mt-2 sm:col-span-2 sm:mt-0 flex items-center space-x-2">
+              <span className="text-gray-700">$</span>
               <input
                 id="price"
                 name="price"
                 type="number"
                 value={book.price}
                 onChange={handleInput}
-                className="block w-32 rounded-md border-gray-300 px-3 py-1.5 focus:outline-indigo-600 sm:text-sm"
+                className="
+        block
+        w-32
+        rounded-md
+        border
+        border-gray-300
+        px-3
+        py-1.5
+        text-sm
+        focus:outline-none
+        focus:ring-2
+        focus:ring-indigo-600
+        focus:border-indigo-600
+      "
               />
             </div>
           </div>
@@ -123,23 +154,42 @@ export default function FormLibro({
 
         {/* Datos del autor */}
         <div>
-          <h2 className="text-2xl font-semibold text-gray-900">Información del autor</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 ">
+            Información del autor
+          </h2>
 
-          <div className="mt-10 space-y-8 border-b border-gray-900/10 pb-12">
+          <div className="mt-5 space-y-8 border-b border-gray-900/10 pb-12">
             {/* Nombre autor */}
             <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
-              <label htmlFor="author" className="block text-sm font-medium text-gray-900 sm:pt-1.5">
+              <label
+                htmlFor="author"
+                className="block text-sm font-medium text-gray-900 sm:pt-1.5"
+              >
                 Autor
               </label>
               <div className="mt-2 sm:col-span-2 sm:mt-0">
-                <input
-                  id="author"
-                  name="author"
-                  type="text"
-                  value={book.author}
-                  onChange={handleInput}
-                  className="block w-full rounded-md border-gray-300 px-3 py-1.5 focus:outline-indigo-600 sm:text-sm"
-                />
+                  <input
+                    id="author"
+                    name="author"
+                    type="text"
+                    value={book.author}
+                    onChange={handleInput}
+                    className="
+                      block
+                        w-full
+                        max-w-xs
+                        rounded-md
+                        border
+                        border-gray-300
+                        px-3
+                        py-1.5
+                        text-sm
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-indigo-600
+                        focus:border-indigo-600
+                    "
+                  />
               </div>
             </div>
           </div>

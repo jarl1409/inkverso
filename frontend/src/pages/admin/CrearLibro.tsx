@@ -45,7 +45,7 @@ export default function CrearLibro() {
         return res.json();
       })
       .then((nuevo: Book) => {
-        // opcional: podrías navegar a la página de detalle
+        // opcional: podría navegar a la página de detalle
         navigate("/mis-libros");
       })
       .catch(err => {
