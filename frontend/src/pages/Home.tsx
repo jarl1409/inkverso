@@ -11,6 +11,8 @@ const mockBooks: Book[] = [
     author: "Jacob Grimm",
     price: 35,
     coverUrl: "/images/portadasLibros/Imagen-1.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 2,
@@ -18,6 +20,8 @@ const mockBooks: Book[] = [
     author: "Arthur Conan Doyle",
     price: 65,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 3,
@@ -25,6 +29,8 @@ const mockBooks: Book[] = [
     author: "Lewis Carroll",
     price: 73,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 4,
@@ -32,6 +38,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 5,
@@ -39,6 +47,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-1.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 6,
@@ -46,6 +56,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 7,
@@ -53,6 +65,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 8,
@@ -60,6 +74,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-1.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 9,
@@ -67,6 +83,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 10,
@@ -74,6 +92,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 11,
@@ -81,6 +101,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 12,
@@ -88,6 +110,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 13,
@@ -95,6 +119,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 14,
@@ -102,6 +128,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 15,
@@ -109,6 +137,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 16,
@@ -116,6 +146,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 17,
@@ -123,6 +155,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 18,
@@ -130,6 +164,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 19,
@@ -137,6 +173,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 20,
@@ -144,6 +182,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 21,
@@ -151,6 +191,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 22,
@@ -158,6 +200,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 23,
@@ -165,6 +209,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 24,
@@ -172,6 +218,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 25,
@@ -179,6 +227,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 26,
@@ -186,6 +236,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 27,
@@ -193,6 +245,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 28,
@@ -200,6 +254,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 29,
@@ -207,6 +263,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 30,
@@ -214,6 +272,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 31,
@@ -221,6 +281,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 32,
@@ -228,6 +290,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
   {
     id: 33,
@@ -235,6 +299,8 @@ const mockBooks: Book[] = [
     author: "Acme Inc.",
     price: 15,
     coverUrl: "/images/portadasLibros/Imagen-2.png",
+    description:
+      "Brujas, pillos, animales parlanchines, sapos besucones, enanos, princesas, príncipes… Los cuentos de los Hermanos Grimm han servido de inspiración para numerosas adaptaciones fílmicas para los más pequeños, en gran medida transformadas y embellecidas. En esta edición, el lector tanto joven como adulto tiene la oportunidad de conocer quince cuentos originales en una nueva traducción a cargo de Isabel Hernández: «El rey sapo o Enrique el de hierro», «Cuento de uno que se marchó a aprender lo que era el miedo», «El lobo y los siete cabritillos», «Rapunzel», «Las tres hilanderas», «Hansel y Gretel», «El pescador y su mujer», «El sastrecillo valiente», «Cenicienta», «Caperucita Roja», «Los músicos de Bremen». «Pulgarcito», «La bella durmiente», «Blancanieves» y «Rumpelstiltskin».",
   },
 ];
 

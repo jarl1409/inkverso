@@ -29,7 +29,7 @@ export default function Layout() {
         setMobileMenuOpen={setMobileMenuOpen}
       />
       {/* Aquí va el contenido de cada ruta */}
-      <main className="min-h-[calc(100vh-6rem)]">
+      <main className="min-h-[calc(100vh-6rem)] bg-gray-100">
         <Outlet />
       </main>
       <Footer />

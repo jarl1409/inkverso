@@ -26,8 +26,8 @@ const LibrosGrid: React.FC<Props> = ({ books, perPage = 24 }) => {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div>
-      <div className="bg-white">
+    <div className="">
+      <div>
         <div className="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8">
           <h2 className="sr-only">Libros</h2>
           <div className="bg-yellow-600">

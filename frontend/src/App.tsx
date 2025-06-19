@@ -7,12 +7,13 @@ import Historial from "./pages/Historial";
 import MisLibros from "./pages/admin/MisLibros";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import CrudLibros from "./pages/admin/CrudLibros";
+import Cart from "./pages/Cart";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
 
@@ -21,6 +22,8 @@ export default function App() {
           <Route path="configuracion" element={<Configuracion />} />
           <Route path="historial" element={<Historial />} />
           <Route path="mis-libros" element={<MisLibros />} />
+          <Route path="mis-libros/editar" element={<CrudLibros />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>
