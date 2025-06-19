@@ -30,7 +30,7 @@ const LibrosGrid: React.FC<Props> = ({ books, perPage = 24 }) => {
       <div>
         <div className="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8">
           <h2 className="sr-only">Libros</h2>
-          <div className="bg-yellow-600">
+          <div className="bg-yellow-800">
             <h2 className="font-bold text-4xl text-center text-white py-5 mt-6">
               Libros Disponibles
             </h2>

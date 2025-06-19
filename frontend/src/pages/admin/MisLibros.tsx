@@ -28,25 +28,28 @@ const orders: Order[] = [
 ];
 
 const stats = [
-  { name: "Total Subscribers", stat: "71,897" },
-  { name: "Avg. Open Rate", stat: "58.16%" },
-  { name: "Avg. Click Rate", stat: "24.57%" },
+  { name: "Libros vendidos", stat: "21" },
+  { name: "Ganancias", stat: "$58.16" },
+  { name: "Gastos", stat: "$24.57" },
 ];
 export default function MisLibros() {
   return (
     <>
-      <div>
-        <BookOpenIcon className="w-5 h-5 " />
-        <h1> Mis libros</h1>
-        <button
-          type="submit"
-          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Acceder
-        </button>
-      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className=" text-base font-semibold text-gray-900">Last 30 days</h3>
+        <div className="flex items-center justify-between py-10">
+          <div className="flex items-center space-x-2">
+            <BookOpenIcon className="w-10 h-auto text-yellow-800" />
+            <h1 className="text-yellow-800 text-3xl font-bold">Mis Libros</h1>
+          </div>
+
+          <button
+            type="button"
+            className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-md shadow"
+          >
+            Publicar Libro
+          </button>
+        </div>
+        <h3 className=" text-base font-semibold text-gray-900">Últimos 30 días</h3>
         <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
           {stats.map((item) => (
             <div

@@ -1,6 +1,6 @@
 // src/pages/Home.tsx
 import { useState } from "react";
-import BookGrid from "../components/libros/LibrosGrid";
+import LibrosGrid from "../components/libros/LibrosGrid";
 import Spinner from "../components/ui/Spinner";
 import type { Book } from "../types/Book";
 
@@ -335,7 +335,7 @@ export default function Home() {
 
       {/* Grid de Libros */}
       <section className="pb-10">
-        {loading ? <Spinner /> : <BookGrid books={books} perPage={24} />}
+        {loading ? <Spinner /> : <LibrosGrid books={books} perPage={24} />}
       </section>
     </>
   );
