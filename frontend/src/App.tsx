@@ -7,8 +7,9 @@ import Historial from "./pages/Historial";
 import MisLibros from "./pages/admin/MisLibros";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import CrudLibros from "./pages/admin/CrudLibros";
+import EditarLibro from "./pages/admin/EditarLibro";
 import Cart from "./pages/Cart";
+import CrearLibro from "./pages/admin/CrearLibro";
 
 export default function App() {
   return (
@@ -22,7 +23,8 @@ export default function App() {
           <Route path="configuracion" element={<Configuracion />} />
           <Route path="historial" element={<Historial />} />
           <Route path="mis-libros" element={<MisLibros />} />
-          <Route path="mis-libros/editar" element={<CrudLibros />} />
+          <Route path="mis-libros/editar" element={<EditarLibro />} />
+          <Route path="mis-libros/crear" element={<CrearLibro />} />
           <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>

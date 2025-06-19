@@ -2,6 +2,7 @@
 import ItemMiLibro, { type Order } from "../../components/libros/ItemMiLibro";
 
 import { BookOpenIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const orders: Order[] = [
   {
@@ -42,12 +43,12 @@ export default function MisLibros() {
             <h1 className="text-yellow-800 text-3xl font-bold">Mis Libros</h1>
           </div>
 
-          <button
-            type="button"
+          <Link
+            to={"/mis-libros/crear"}
             className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-md shadow"
           >
             Publicar Libro
-          </button>
+          </Link>
         </div>
         <h3 className=" text-base font-semibold text-gray-900">Últimos 30 días</h3>
         <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
