@@ -1,0 +1,1003 @@
+{
+	"info": {
+		"_postman_id": "2c9704ee-2978-44f9-83ae-2d1a4f1389d4",
+		"name": "inkverso",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38856635",
+		"_collection_link": "https://martian-star-641216.postman.co/workspace/Inkverso~105fcf42-1d97-487c-ae65-6efab607862b/collection/38856635-2c9704ee-2978-44f9-83ae-2d1a4f1389d4?action=share&source=collection_link&creator=38856635"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin - Listar Libros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/libros",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"libros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin – Listar Notificaciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/notificaciones",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin – Listar Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/usuarios",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin – Eliminar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/usuarios/6842b813db3a7ce131e44d8e",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"usuarios",
+								"6842b813db3a7ce131e44d8e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin – Obtener Pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/pedidos/6842e812fd63b13e0044a721",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"pedidos",
+								"6842e812fd63b13e0044a721"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin – Actualizar Estado Pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"estado\": \"enviado\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/pedidos/6842e812fd63b13e0044a721",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"pedidos",
+								"6842e812fd63b13e0044a721"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Listar Pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/pedidos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Crear Libro",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titulo",
+									"value": "Cuentos de los hermanos green",
+									"type": "text"
+								},
+								{
+									"key": "autor",
+									"value": "Gabriel Garcia Marquez",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "La obra maestra del realismo mágico",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "14325",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categoria",
+									"value": "novela",
+									"type": "text"
+								},
+								{
+									"key": "imagenURL",
+									"type": "file",
+									"src": "/home/jarl1409/Descargas/Imagen.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/libros",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"libros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin – Listar Pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/pedidos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Actualizar Libro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Las aventuras de Sherlock Holmes\",\n    \"autor\": \"Miguel de Cervantes\",\n    \"descripcion\": \"En los doce relatos recogidos en este libro, Sherlock Holmes despliega toda su genialidad y potencial de razonamiento y, junto a Watson, forman una de las parejas más célebres de la ficción. En Escándalo en Bohemia, el rey de Bohemia solicita la ayuda de Sherlock Holmes para recuperar una imagen que puede usarse en su contra. En La liga de los Pelirrojos, un hombre acude al detective en busca de consejo sobre la desaparición de una extraña sociedad de pelirrojos. En El misterio de Boscombe Valley, Holmes investiga el asesinato de un hombre cuyo hijo es el principal sospechoso. En Las cinco semillas de naranja, los detectives se enfrentan a un caso familiar: dos hermanos y un hijo reciben cartas del KKK que contienen cinco pepitas de naranja, un presagio de la muerte. En La banda de lunares, Helen Stoner ruega a Sherlock Holmes que le ayude a resolver la muerte de su hermana, fallecida un día antes de su boda. Ahora la mujer teme correr la misma suerte.\",\n    \"precio\": 60000,\n    \"stock\": 4,\n    \"imagenURL\": \"/uploads/1752223091002-Imagen-1.png\",\n    \"categoria\": \"relatos detectivescos\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/libros/6870cd7302f7ad0968cc5509",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"libros",
+								"6870cd7302f7ad0968cc5509"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Eliminar Libro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/libros/6842c9f790583618e64a9c3c",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"libros",
+								"6842c9f790583618e64a9c3c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Cliente – Obtener Carrito",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLIENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"libroId\": \"6842c7af90583618e64a9c34\",\n  \"cantidad\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/carrito",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"carrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Eliminar Item Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLIENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/carrito/6842c7af90583618e64a9c34",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"carrito",
+								"6842c7af90583618e64a9c34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Vaciar Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLIENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/carrito",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"carrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Agregar al Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDJjZDk5ZGEzMTcxZjczMTdkNDBkOSIsInJvbCI6ImNsaWVudGUiLCJpYXQiOjE3NDkyMTE0NTIsImV4cCI6MTc0OTIxODY1Mn0.qvgOutWoQB1bnzA8hOhBKxr67Z2Wqqp9BMG9C0Rc1yY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"libroId\": \"6842c7af90583618e64a9c34\",\n  \"cantidad\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/carrito",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"carrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Actualizar Item Carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDJjZDk5ZGEzMTcxZjczMTdkNDBkOSIsInJvbCI6ImNsaWVudGUiLCJpYXQiOjE3NDkyMTE0NTIsImV4cCI6MTc0OTIxODY1Mn0.qvgOutWoQB1bnzA8hOhBKxr67Z2Wqqp9BMG9C0Rc1yY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"libroId\": \"6842c7af90583618e64a9c34\",\n  \"cantidad\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/carrito",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"carrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Realizar Checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDJjZDk5ZGEzMTcxZjczMTdkNDBkOSIsInJvbCI6ImNsaWVudGUiLCJpYXQiOjE3NDkyMTE0NTIsImV4cCI6MTc0OTIxODY1Mn0.qvgOutWoQB1bnzA8hOhBKxr67Z2Wqqp9BMG9C0Rc1yY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metodoEnvio\": \"express\",\n  \"metodoPago\": \"tarjeta\",\n  \"direccionEnvio\": {\n    \"calle\": \"Av. Siempre Viva 742\",\n    \"ciudad\": \"Santa Marta\",\n    \"estado\": \"Magdalena\",\n    \"zip\": \"470001\",\n    \"pais\": \"Colombia\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/pedidos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Listar Mis Pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDJjZDk5ZGEzMTcxZjczMTdkNDBkOSIsInJvbCI6ImNsaWVudGUiLCJpYXQiOjE3NDkyMTE0NTIsImV4cCI6MTc0OTIxODY1Mn0.qvgOutWoQB1bnzA8hOhBKxr67Z2Wqqp9BMG9C0Rc1yY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/pedidos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente – Obtener Pedido",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metodoEnvio\": \"express\",\n  \"metodoPago\": \"tarjeta\",\n  \"direccionEnvio\": {\n    \"calle\": \"Av. Siempre Viva 742\",\n    \"ciudad\": \"Santa Marta\",\n    \"estado\": \"Magdalena\",\n    \"zip\": \"470001\",\n    \"pais\": \"Colombia\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{token}}/api/pedidos/6842e812fd63b13e0044a721",
+							"host": [
+								"{{token}}"
+							],
+							"path": [
+								"api",
+								"pedidos",
+								"6842e812fd63b13e0044a721"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "Público – Registro Usuario",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\":  \"{{$randomFirstName}}\",\n  \"email\":   \"{{$randomEmail}}\",\n  \"password\":\"123456\",\n  \"rol\": \"administrador\" \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/registro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Público – Iniciar Sesión",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Capturo el token de la respuesta y lo guardo en la variable de entorno \"token\"",
+									"if (pm.response.code === 200) {",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"Deon75@hotmail.com\",\n  \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Público – Listar Libros",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDJjZDk5ZGEzMTcxZjczMTdkNDBkOSIsInJvbCI6ImNsaWVudGUiLCJpYXQiOjE3NDkyMTE0NTIsImV4cCI6MTc0OTIxODY1Mn0.qvgOutWoQB1bnzA8hOhBKxr67Z2Wqqp9BMG9C0Rc1yY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metodoEnvio\": \"express\",\n  \"metodoPago\": \"tarjeta\",\n  \"direccionEnvio\": {\n    \"calle\": \"Av. Siempre Viva 742\",\n    \"ciudad\": \"Santa Marta\",\n    \"estado\": \"Magdalena\",\n    \"zip\": \"470001\",\n    \"pais\": \"Colombia\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/libros",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"libros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Público – Obtener Libro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/libros/6842c7af90583618e64a9c34",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"libros",
+								"6842c7af90583618e64a9c34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "ADMIN_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDJjNDYzOTA1ODM2MThlNjRhOWMyYSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3NDkyMDY2MjQsImV4cCI6MTc0OTIxMzgyNH0.I9BWwp_T9UaWuR4SADjgwdFNPjZ8GWtyPYqsJuDi8TY",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
