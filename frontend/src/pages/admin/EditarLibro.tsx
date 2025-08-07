@@ -6,6 +6,8 @@ import FormLibro from "../../components/libros/FormLibro";
 import type { Book } from "../../types/Book";
 import api from "../../utils/api";
 
+type LibroByIdResponse = Book | { libro: Book };
+
 export default function EditarLibro() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -28,14 +30,24 @@ export default function EditarLibro() {
   // Al montar, traemos el libro por id
   useEffect(() => {
     if (!id) return;
-    fetch(`/api/libros/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then((data: Book) => setBook(data))
-      .catch(console.error)
-      .finally(() => setLoading(false));
+    let cancel = false;
+
+    (async () => {
+      try {
+        // si tu backend responde { libro: Book }
+        const { data } = await api.get<LibroByIdResponse>(`/libros/${id}`);
+        const libro = "libro" in data ? data.libro : data;
+        if (!cancel) setBook(libro);
+      } catch (err) {
+        console.error("No se pudo cargar el libro:", err);
+      } finally {
+        if (!cancel) setLoading(false);
+      }
+    })();
+
+    return () => {
+      cancel = true;
+    };
   }, [id]);
 
   // Callback para actualizar cada campo
@@ -65,8 +77,6 @@ export default function EditarLibro() {
 
       if (file) {
         formData.append("imagenURL", file);
-      } else {
-        formData.append("imagenURL", book.imagenURL);
       }
 
       // Llama al endpoint PUT con Api
