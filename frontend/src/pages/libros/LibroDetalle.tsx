@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import api from "../../utils/api";
 import { useCarrito } from "../../context/CartContext";
 import { PrivateRoutes } from "../../routes";
+import { getErrorMessage } from "../../utils/error";
 
 interface BookDetail {
   _id: string;
@@ -31,7 +32,8 @@ export default function LibroDetalle() {
         const { data } = await api.get<{ libro: BookDetail }>(`/libros/${id}`);
         setLibro(data.libro);
       } catch (err) {
-        console.error("Error al cargar libro:", err);
+        const mensaje = getErrorMessage(err);
+        console.error("Error al cargar libro:", mensaje);
       } finally {
         setLoading(false);
       }

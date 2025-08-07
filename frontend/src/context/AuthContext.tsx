@@ -1,4 +1,4 @@
-import axios from "axios";
+import { getErrorMessage } from "../utils/error";
 import api from "../utils/api";
 
 import {
@@ -21,7 +21,11 @@ interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
-  register: (data: { nombre: string; email: string; password: string }) => Promise<void>;
+  register: (data: {
+    nombre: string;
+    email: string;
+    password: string;
+  }) => Promise<void>;
   logout: () => void;
 }
 
@@ -64,30 +68,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setToken(res.data.token);
       setUser(res.data.usuario);
     } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        const mensaje =
-          error.response?.data?.mensaje || "Error del servidor";
-        throw new Error(mensaje);
-      }
-      throw new Error("Error inesperado");
+      const mensaje = getErrorMessage(error);
+      throw new Error(mensaje);
     }
   }
 
-  async function register({ nombre, email, password }: { nombre: string; email: string; password: string; }) {
+  async function register({
+    nombre,
+    email,
+    password,
+  }: {
+    nombre: string;
+    email: string;
+    password: string;
+  }) {
     try {
-      await api.post(
-        "/auth/registro",
-        { nombre, email, password }
-      );
+      await api.post("/auth/registro", { nombre, email, password });
       // Después de registrarse exitosamente, inicie sesión para obtener el token
       await login(email, password);
     } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        const mensaje =
-          error.response?.data?.mensaje || "Error registrando usuario";
-        throw new Error(mensaje);
-      }
-      throw new Error("Error inesperado");
+      const mensaje = getErrorMessage(error);
+      throw new Error(mensaje);
     }
   }
 

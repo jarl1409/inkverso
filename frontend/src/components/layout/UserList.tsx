@@ -3,6 +3,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 
 import api from "../../utils/api";
+import { getErrorMessage } from "../../utils/error";
 
 interface Usuario {
   _id: string;
@@ -17,30 +18,25 @@ interface Usuario {
 export default function UsersList() {
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Definimos una función async para poder usar try/catch/finally
     async function loadUsers() {
       try {
         const response = await api.get<Usuario[]>("/usuario");
         setUsuarios(response.data);
-      } catch (err: any) {
-        // Extraemos mensaje de error de forma segura
-        const msg =
-          err.response?.data?.message ??
-          err.message ??
-          "Error al cargar usuarios";
-        setError(msg);
+      } catch (err: unknown) {
+        const mensaje = getErrorMessage(err);
+        console.error("Error al cargar los usuarios: ", mensaje);
+
+        setError(mensaje);
       } finally {
-        // Esto siempre se ejecuta, equivalente al antiguo `.finally(...)`
         setLoading(false);
       }
     }
     loadUsers();
   }, []);
-  
+
   const cambiarRol = async (
     id: string,
     rolActual: "cliente" | "administrador"
@@ -57,8 +53,8 @@ export default function UsersList() {
         )
       );
     } catch (err) {
-      console.error(err);
-      alert("No se pudo cambiar el rol.");
+      const mensaje = getErrorMessage(err);
+      console.error("No se pudo cambiar el rol.", mensaje);
     }
   };
 
@@ -68,8 +64,8 @@ export default function UsersList() {
       await api.delete(`/usuario/${id}`);
       setUsuarios((u) => u.filter((user) => user._id !== id));
     } catch (err) {
-      console.error(err);
-      alert("No se pudo eliminar el usuario.");
+      const mensaje = getErrorMessage(err);
+      console.log("No se pudo eliminar el usuario. ", mensaje);
     }
   };
 

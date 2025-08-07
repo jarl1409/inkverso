@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useFormatter } from "../../context/FormatterContext";
 import api from "../../utils/api";
 import { PrivateRoutes } from "../../routes";
+import { getErrorMessage } from "../../utils/error";
 
 export interface DisplayBook {
   id: string;
@@ -44,8 +45,8 @@ export default function ItemMiLibro({ orders }: ItemMiLibroProps) {
       // Refrescar la página o volver a cargar la lista
       window.location.reload();
     } catch (err) {
-      console.error("Error al eliminar libro:", err);
-      alert("No se pudo eliminar el libro");
+      const mensaje = getErrorMessage(err)
+      console.error(mensaje)
     } finally {
       setSubmitting(false);
     }
