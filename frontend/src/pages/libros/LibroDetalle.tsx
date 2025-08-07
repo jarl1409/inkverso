@@ -25,11 +25,19 @@ export default function LibroDetalle() {
 
   useEffect(() => {
     if (!id) return;
-    api
-      .get<{ libro: BookDetail }>(`/libros/${id}`)
-      .then((res) => setLibro(res.data))
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
+
+    async function loadLibro() {
+      try {
+        const { data } = await api.get<{ libro: BookDetail }>(`/libros/${id}`);
+        setLibro(data.libro);
+      } catch (err) {
+        console.error("Error al cargar libro:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadLibro();
   }, [id]);
 
   if (loading) return <p>Cargando libro…</p>;
