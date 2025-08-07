@@ -1,7 +1,7 @@
-import { Schema, model, Document, Types } from 'mongoose';
+import { Schema, model, Document, Types } from "mongoose";
 
 interface IItem {
-  libroId: Types.ObjectId;
+  libroId: Types.ObjectId | string;
   cantidad: number;
   precioUnitario: number;
 }
@@ -17,7 +17,7 @@ const ItemSchema = new Schema<IItem>(
   {
     libroId: {
       type: Schema.Types.ObjectId,
-      ref: 'Libro',
+      ref: "Libro",
       required: true,
     },
     cantidad: {
@@ -36,7 +36,7 @@ const ItemSchema = new Schema<IItem>(
 const CarritoSchema = new Schema<ICarrito>({
   usuarioId: {
     type: Schema.Types.ObjectId,
-    ref: 'Usuario',
+    ref: "Usuario",
     required: true,
     index: true,
   },
@@ -55,4 +55,4 @@ const CarritoSchema = new Schema<ICarrito>({
   },
 });
 
-export const Carrito = model<ICarrito>('Carrito', CarritoSchema);
+export const Carrito = model<ICarrito>("Carrito", CarritoSchema);

@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { authMiddleware } from "../middlewares/authMiddleware";
 import { adminMiddleware } from "../middlewares/adminMiddleware";
+import { upload } from "../middlewares/uploadMiddleware";
+
 import {
   listarLibros,
   crearLibro,
@@ -8,7 +10,7 @@ import {
   eliminarLibro,
 } from "../controllers/libroController";
 
-import { upload } from "../middlewares/uploadMiddleware";
+import { Usuario } from "../models/Usuario";
 
 const router = Router();
 
@@ -23,7 +25,6 @@ router.get("/libros", listarLibros);
 router.post("/libros", upload.single("imagenURL"), crearLibro);
 router.put("/libros/:id", upload.single("imagenURL"), actualizarLibro);
 router.delete("/libros/:id", eliminarLibro);
-
 
 // --- Gestión de usuarios ---
 router.get("/usuarios", async (_req, res) => {
@@ -45,6 +46,5 @@ router.delete("/usuarios/:id", async (req, res) => {
     return res.status(500).json({ mensaje: "Error al eliminar usuario" });
   }
 });
-
 
 export default router;

@@ -1,6 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface ILibro extends Document {
+  _id:string;
   titulo: string;
   autor?: string;
   descripcion?: string;

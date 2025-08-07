@@ -1,6 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface IUsuario extends Document {
+  _id: string;
   nombre: string;
   email: string;
   passwordHash: string;
