@@ -19,22 +19,28 @@ export default function UsersList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    api
-      .get<Usuario[]>("/usuario")
-      .then(({ data }) => {
-        setUsuarios(data);
-      })
-      .catch((err) =>
-        setError(
-          err.response?.data?.message ??
-            err.message ??
-            "Error al cargar usuarios"
-        )
-      )
-      .finally(() => setLoading(false));
-  }, []);
 
+  useEffect(() => {
+    // Definimos una función async para poder usar try/catch/finally
+    async function loadUsers() {
+      try {
+        const response = await api.get<Usuario[]>("/usuario");
+        setUsuarios(response.data);
+      } catch (err: any) {
+        // Extraemos mensaje de error de forma segura
+        const msg =
+          err.response?.data?.message ??
+          err.message ??
+          "Error al cargar usuarios";
+        setError(msg);
+      } finally {
+        // Esto siempre se ejecuta, equivalente al antiguo `.finally(...)`
+        setLoading(false);
+      }
+    }
+    loadUsers();
+  }, []);
+  
   const cambiarRol = async (
     id: string,
     rolActual: "cliente" | "administrador"
