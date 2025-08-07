@@ -1,4 +1,4 @@
-import { useState, useEffect, type FormEvent, type ChangeEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { UserCircleIcon, FingerPrintIcon } from "@heroicons/react/24/outline";
 
 import api from "../utils/api";
@@ -283,7 +283,10 @@ function SeguridadView() {
                 name={field.name}
                 value={form[field.name]}
                 onChange={(e) => {
-                  handleChange(field.name as keyof FormStateProps, e.target.value);
+                  handleChange(
+                    field.name as keyof FormStateProps,
+                    e.target.value
+                  );
                 }}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
