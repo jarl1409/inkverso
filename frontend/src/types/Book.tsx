@@ -8,3 +8,5 @@ export interface Book {
   imagenURL: string;
   categoria: string;
 }
+
+export type LibroPayload = Omit<Book, "_id">;

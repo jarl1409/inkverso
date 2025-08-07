@@ -1,10 +1,9 @@
 import type { ChangeEvent, FormEvent } from "react";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 
-import type { Book } from "../../types/Book";
-
+import type { Book, LibroPayload } from "../../types/Book";
 export interface FormLibroProps {
-  book: Book;
+  book: LibroPayload;
   onChange: (field: keyof Book, value: string | number) => void;
   onFileChange: (file: File) => void;
   onSubmit: () => void;

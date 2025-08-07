@@ -1,27 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FormEvent, type ChangeEvent } from "react";
 import { UserCircleIcon, FingerPrintIcon } from "@heroicons/react/24/outline";
 
 import api from "../utils/api";
 
-type Usuario = {
+type UsuarioProps = {
   nombre: string;
   email: string;
   birthDate?: string;
   rol: "cliente" | "administrador";
   fechaRegistro: string;
 };
-type FormState = {
+
+type FormStateProps = {
   currentPassword: string;
   newPassword: string;
   confirmPassword: string;
+  [key: string]: string;
+};
+
+type GeneralViewProps = {
+  user: UsuarioProps;
+  onUpdate: (nuevoPerfil: UsuarioProps) => void;
 };
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ConfiguracionContent() {
-  const [user, setUser] = useState<Usuario | null>(null);
+export default function Configuracion() {
+  const [perfil, setPerfil] = useState<UsuarioProps | null>(null);
   const [current, setCurrent] = useState("General");
 
   const sections = [
@@ -32,12 +39,12 @@ export default function ConfiguracionContent() {
   // 1. Fetch inicial del perfil
   useEffect(() => {
     api
-      .get<Usuario>("/usuario/perfil")
-      .then((res) => setUser(res.data))
+      .get<UsuarioProps>("/usuario/perfil")
+      .then((res) => setPerfil(res.data))
       .catch((err) => console.error("Error al cargar perfil:", err));
   }, []);
 
-  if (!user) {
+  if (!perfil) {
     return <p className="p-4 text-center text-gray-500">Cargando perfil…</p>;
   }
 
@@ -78,7 +85,7 @@ export default function ConfiguracionContent() {
       {/* Main panel */}
       <main className="px-4 py-16 sm:px-6 lg:flex-auto lg:px-0 lg:py-20">
         {current === "General" && (
-          <GeneralView user={user} onUpdate={setUser} />
+          <GeneralView user={perfil} onUpdate={setPerfil} />
         )}
         {current === "Seguridad" && <SeguridadView />}
       </main>
@@ -86,7 +93,7 @@ export default function ConfiguracionContent() {
   );
 }
 
-function GeneralView({ user, onUpdate }) {
+function GeneralView({ user, onUpdate }: GeneralViewProps) {
   const campos = [
     { key: "nombre", label: "Nombre completo", editable: true, type: "text" },
     {
@@ -125,7 +132,7 @@ function GeneralView({ user, onUpdate }) {
 
   const saveField = () => {
     api
-      .put<Usuario>("/usuario/perfil", { [editing!]: inputValue })
+      .put<UsuarioProps>("/usuario/perfil", { [editing!]: inputValue })
       .then((res) => {
         onUpdate(res.data); // actualiza todo user con la respuesta
         setEditing(null);
@@ -201,17 +208,21 @@ function GeneralView({ user, onUpdate }) {
 }
 
 function SeguridadView() {
-  const [form, setForm] = useState<FormState>({
+  const [form, setForm] = useState<FormStateProps>({
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+
   const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  function handleChange<K extends keyof FormStateProps>(
+    field: K,
+    value: FormStateProps[K]
+  ) {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -236,6 +247,7 @@ function SeguridadView() {
       });
       setSuccess(true);
       setForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.response?.data?.message || "Error al cambiar contraseña");
     }
@@ -270,7 +282,9 @@ function SeguridadView() {
                 id={field.name}
                 name={field.name}
                 value={form[field.name]}
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(field.name as keyof FormStateProps, e.target.value);
+                }}
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>

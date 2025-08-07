@@ -7,6 +7,7 @@ import ItemMiLibro, { type Order } from "../../components/libros/ItemMiLibro";
 import { obtenerLibrosAdmin } from "../../services/libros";
 import { PrivateRoutes } from "../../routes";
 import Spinner from "../../components/ui/Spinner";
+import { getErrorMessage } from "../../utils/error";
 
 
 export default function MisLibros() {
@@ -38,9 +39,9 @@ export default function MisLibros() {
         }));
         setOrders(ods);
       })
-      .catch((e) => {
-        console.error(e);
-        setError("No se pudieron cargar tus libros");
+      .catch((err) => {
+        const mensaje = getErrorMessage(err)
+        setError( mensaje);
       })
       .finally(() => setLoading(false));
   }, []);
