@@ -29,8 +29,8 @@ export default function LibroDetalle() {
 
     async function loadLibro() {
       try {
-        const { data } = await api.get<{ libro: BookDetail }>(`/libros/${id}`);
-        setLibro(data.libro);
+        const { data } = await api.get<BookDetail>(`/libros/${id}`);
+        setLibro(data);
       } catch (err) {
         const mensaje = getErrorMessage(err);
         console.error("Error al cargar libro:", mensaje);

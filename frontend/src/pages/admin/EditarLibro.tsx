@@ -6,7 +6,7 @@ import FormLibro from "../../components/libros/FormLibro";
 import type { Book } from "../../types/Book";
 import api from "../../utils/api";
 
-type LibroByIdResponse = Book | { libro: Book };
+
 
 export default function EditarLibro() {
   const { id } = useParams<{ id: string }>();
@@ -34,10 +34,9 @@ export default function EditarLibro() {
 
     (async () => {
       try {
-        // si tu backend responde { libro: Book }
-        const { data } = await api.get<LibroByIdResponse>(`/libros/${id}`);
-        const libro = "libro" in data ? data.libro : data;
-        if (!cancel) setBook(libro);
+        
+        const { data } = await api.get<Book>(`/libros/${id}`);
+        if (!cancel) setBook(data);
       } catch (err) {
         console.error("No se pudo cargar el libro:", err);
       } finally {
