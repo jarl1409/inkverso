@@ -1,6 +1,7 @@
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const navigate= useNavigate()
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
@@ -25,7 +26,8 @@ api.interceptors.response.use(
       localStorage.removeItem("user");
 
       // Redirige a login
-      window.location.href = "/login";
+      navigate("/login")
+      // window.location.href = "/login"; comentado para ver si este era el error de rutas en el frontend
     }
 
     return Promise.reject(error);
