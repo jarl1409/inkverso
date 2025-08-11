@@ -22,7 +22,6 @@ const schemaLogin = Joi.object({
 
 router.post('/registro', validar(schemaRegistro), registro);
 router.post('/login', validar(schemaLogin), login);
-router.post('/refresh', refresh
-)
+router.post('/refresh', refresh)
 
 export default router;
