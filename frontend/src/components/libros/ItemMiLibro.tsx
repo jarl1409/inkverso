@@ -34,6 +34,8 @@ export default function ItemMiLibro({ orders }: ItemMiLibroProps) {
   const [submitting, setSubmitting] = useState(false);
   const formatter = useFormatter();
 
+  // console.log(bookId);
+  
   const eliminar = async (bookId: string) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar este libro?")) {
       return;
