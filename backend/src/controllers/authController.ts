@@ -1,16 +1,22 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken"; // ⬅️ NUEVO
+import jwt, { type Secret, type SignOptions } from "jsonwebtoken";
 
 import { Usuario, IUsuario } from "../models/Usuario";
 import { generarToken } from "../utils/generarToken";
 
 const isProd = process.env.NODE_ENV === "production";
 
-// Helper mínimo para firmar refresh tokens (usa JWT_REFRESH_SECRET)
+// Fail-fast si faltan secrets
+if (!process.env.JWT_REFRESH_SECRET) {
+  throw new Error("JWT_REFRESH_SECRET no está definido");
+}
+const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET as Secret;
+
+// Helper para firmar refresh tokens
 function generarRefreshToken(payload: { id: string; tv?: number }) {
-  const ttl = process.env.REFRESH_TOKEN_TTL || "30d"; // opcional
-  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, { expiresIn: ttl });
+  const ttl = (process.env.REFRESH_TOKEN_TTL ?? "30d") as SignOptions["expiresIn"];
+  return jwt.sign(payload, REFRESH_SECRET, { expiresIn: ttl });
 }
 
 export const registro = async (req: Request, res: Response) => {
@@ -43,8 +49,7 @@ export const registro = async (req: Request, res: Response) => {
       email,
       passwordHash,
       rol: rolFinal,
-      // tokenVersion opcional: si tu esquema lo tiene, no pasa nada si no.
-      // tokenVersion: 0,
+      // tokenVersion: 0, // si tu esquema lo tiene opcional
     });
     await nuevoUsuario.save();
 
@@ -67,9 +72,7 @@ export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const usuario = (await Usuario.findOne({ email }).select(
-      "+passwordHash"
-    )) as IUsuario | null;
+    const usuario = (await Usuario.findOne({ email }).select("+passwordHash")) as IUsuario | null;
     if (!usuario) {
       return res.status(400).json({ mensaje: "Credenciales inválidas" });
     }
@@ -79,29 +82,26 @@ export const login = async (req: Request, res: Response) => {
       return res.status(400).json({ mensaje: "Credenciales inválidas" });
     }
 
-    // Access token (tu función actual; mantiene el nombre "token" para no romper el front)
+    // Access token
     const token = generarToken({
       id: usuario._id.toString(),
       rol: usuario.rol,
     });
 
-    // ⬇️ REFRESH TOKEN en cookie httpOnly (nuevo)
-    const tokenVersion = (usuario as any).tokenVersion ?? 0; // por si aún no implementas tokenVersion
-    const refreshToken = generarRefreshToken({
-      id: usuario._id.toString(),
-      tv: tokenVersion,
-    });
+    // Refresh token en cookie httpOnly
+    const tokenVersion = (usuario as any).tokenVersion ?? 0;
+    const refreshToken = generarRefreshToken({ id: usuario._id.toString(), tv: tokenVersion });
 
     res.cookie("jid", refreshToken, {
       httpOnly: true,
       sameSite: "lax",
       secure: isProd,
       path: "/api/auth/refresh",
-      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 días
+      maxAge: 1000 * 60 * 60 * 24 * 30,
     });
 
     return res.json({
-      token, // ⬅️ mantenido tal cual
+      token,
       usuario: {
         id: usuario._id,
         nombre: usuario.nombre,
@@ -115,13 +115,12 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-// ⬇️ NUEVO: endpoint de refresh (usa cookie "jid" y devuelve nuevo access token)
 export const refresh = async (req: Request, res: Response) => {
   const tokenCookie = req.cookies?.jid;
   if (!tokenCookie) return res.status(401).json({ mensaje: "No refresh token" });
 
   try {
-    const payload = jwt.verify(tokenCookie, process.env.JWT_REFRESH_SECRET!) as {
+    const payload = jwt.verify(tokenCookie, REFRESH_SECRET) as {
       id: string;
       tv?: number;
       iat: number;
@@ -131,19 +130,15 @@ export const refresh = async (req: Request, res: Response) => {
     const usuario = await Usuario.findById(payload.id);
     if (!usuario) return res.status(401).json({ mensaje: "Usuario no existe" });
 
-    // Si implementas tokenVersion en el modelo, valida aquí:
     const dbTV = (usuario as any).tokenVersion ?? 0;
     if (payload.tv != null && payload.tv !== dbTV) {
       return res.status(401).json({ mensaje: "Refresh inválido" });
     }
 
     // Nuevo access
-    const newAccess = generarToken({
-      id: usuario._id.toString(),
-      rol: usuario.rol,
-    });
+    const newAccess = generarToken({ id: usuario._id.toString(), rol: usuario.rol });
 
-    // Rotamos refresh (buena práctica)
+    // Rotación de refresh
     const newRefresh = generarRefreshToken({ id: usuario._id.toString(), tv: dbTV });
     res.cookie("jid", newRefresh, {
       httpOnly: true,
@@ -154,7 +149,7 @@ export const refresh = async (req: Request, res: Response) => {
     });
 
     return res.json({ accessToken: newAccess });
-  } catch (error) {
+  } catch {
     return res.status(401).json({ mensaje: "Refresh inválido" });
   }
 };

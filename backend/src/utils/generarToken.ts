@@ -1,15 +1,13 @@
 import jwt, { type Secret, type SignOptions } from "jsonwebtoken";
-import dotenv from "dotenv";
-
 import { JwtPayloadCustom } from "../types";
 
-dotenv.config();
-
+if (!process.env.JWT_SECRET) {
+  throw new Error("JWT_SECRET no está definido");
+}
 const JWT_SECRET = process.env.JWT_SECRET as Secret;
 
 export const generarToken = (payload: JwtPayloadCustom): string => {
-  const expiresIn: SignOptions["expiresIn"] =
-    (process.env.ACCESS_TOKEN_TTL as SignOptions["expiresIn"]) || "15m";
+  const expiresIn = (process.env.ACCESS_TOKEN_TTL ?? "15m") as SignOptions["expiresIn"];
   return jwt.sign(payload, JWT_SECRET, { expiresIn });
 };
 
