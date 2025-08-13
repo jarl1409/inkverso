@@ -46,15 +46,35 @@ const allowList = new Set([
 ]);
 const corsOptions: CorsOptions = {
   origin(origin, cb) {
-    if (!origin) return cb(null, true); // Postman/cURL
-    return allowList.has(origin)
-      ? cb(null, true)
-      : cb(new Error(`Not allowed by CORS: ${origin}`));
+    // Log del origen recibido (solo en desarrollo)
+    if (!isProd) {
+      console.log(
+        `📨 CORS request from origin: ${origin || "undefined (local request)"}`
+      );
+    }
+
+    // Si no hay origin (Postman, cURL, etc)
+    if (!origin) {
+      return cb(null, true);
+    }
+
+    // Verificar si está en la lista
+    const isAllowed = allowList.has(origin);
+
+    if (isAllowed) {
+      if (!isProd) console.log("✅ CORS: Origin allowed");
+      return cb(null, true);
+    } else {
+      // IMPORTANTE: NO pasar Error, solo false
+      console.warn(`⚠️ CORS blocked request from: ${origin}`);
+      return cb(null, false); // ← CAMBIO CRÍTICO: false en lugar de Error
+    }
   },
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  maxAge: 600,
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  exposedHeaders: ["Set-Cookie"],
+  maxAge: 86400, // 24 horas
 };
 app.use(cors(corsOptions));
 app.options(/.*/, cors(corsOptions));

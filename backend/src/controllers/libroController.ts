@@ -1,3 +1,4 @@
+// /home/jarl1409/proyectos/inkverso/backend/src/controllers/libroController.ts
 import { Request, Response } from "express";
 
 import { Libro, ILibro } from "../models/Libro";
