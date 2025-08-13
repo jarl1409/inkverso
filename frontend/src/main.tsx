@@ -6,9 +6,11 @@ import App from "./App.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import { CartProvider } from "./context/CartContext";
 import { FormatterProvider } from "./context/FormatterContext";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <BrowserRouter>
     <AuthProvider>
       <FormatterProvider>
         <CartProvider>
@@ -16,5 +18,6 @@ createRoot(document.getElementById("root")!).render(
         </CartProvider>
       </FormatterProvider>
     </AuthProvider>
+    </BrowserRouter>
   </StrictMode>
 );

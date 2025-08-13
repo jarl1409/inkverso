@@ -16,7 +16,8 @@ const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET as Secret;
 
 // Helper para firmar refresh tokens
 function generarRefreshToken(payload: { id: string; tv?: number }) {
-  const ttl = (process.env.REFRESH_TOKEN_TTL ?? "30d") as SignOptions["expiresIn"];
+  const ttl = (process.env.REFRESH_TOKEN_TTL ??
+    "30d") as SignOptions["expiresIn"];
   return jwt.sign(payload, REFRESH_SECRET, { expiresIn: ttl });
 }
 
@@ -24,10 +25,19 @@ function generarRefreshToken(payload: { id: string; tv?: number }) {
 function setRefreshCookie(res: Response, value: string) {
   res.cookie("jid", value, {
     httpOnly: true,
-    secure: isProd,       // obligatorio en producción (HTTPS)
-    sameSite: "none",     // imprescindible para cross-site (Vercel <-> Render)
+    secure: isProd, // true en prod (HTTPS), false en dev
+    sameSite: isProd ? "none" : "lax", // NONE en prod, LAX en dev (localhost)
     path: "/api/auth/refresh",
     maxAge: 1000 * 60 * 60 * 24 * 30, // 30 días
+  });
+}
+
+function clearRefreshCookie(res: Response) {
+  res.clearCookie("jid", {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: isProd ? "none" : "lax",
+    path: "/api/auth/refresh", // ¡debe ser el mismo path!
   });
 }
 
@@ -84,11 +94,15 @@ export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const usuario = (await Usuario.findOne({ email }).select("+passwordHash")) as IUsuario | null;
-    if (!usuario) return res.status(400).json({ mensaje: "Credenciales inválidas" });
+    const usuario = (await Usuario.findOne({ email }).select(
+      "+passwordHash"
+    )) as IUsuario | null;
+    if (!usuario)
+      return res.status(400).json({ mensaje: "Credenciales inválidas" });
 
     const esMatch = await bcrypt.compare(password, usuario.passwordHash);
-    if (!esMatch) return res.status(400).json({ mensaje: "Credenciales inválidas" });
+    if (!esMatch)
+      return res.status(400).json({ mensaje: "Credenciales inválidas" });
 
     // Access token (corto)
     const token = generarToken({
@@ -98,7 +112,10 @@ export const login = async (req: Request, res: Response) => {
 
     // Refresh token (largo) en cookie httpOnly
     const tokenVersion = (usuario as any).tokenVersion ?? 0;
-    const refreshToken = generarRefreshToken({ id: usuario._id.toString(), tv: tokenVersion });
+    const refreshToken = generarRefreshToken({
+      id: usuario._id.toString(),
+      tv: tokenVersion,
+    });
     setRefreshCookie(res, refreshToken); // <-- usar helper con SameSite=None
 
     return res.json({
@@ -116,12 +133,21 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+export const logout = async (_req: Request, res: Response) => {
+  clearRefreshCookie(res);
+  return res.status(200).json({ mensaje: "Sesión cerrada" });
+};
+
 export const refresh = async (req: Request, res: Response) => {
   const tokenCookie = req.cookies?.jid;
-  if (!tokenCookie) return res.status(401).json({ mensaje: "No refresh token" });
+  if (!tokenCookie)
+    return res.status(401).json({ mensaje: "No refresh token" });
 
   try {
-    const payload = jwt.verify(tokenCookie, REFRESH_SECRET) as { id: string; tv?: number };
+    const payload = jwt.verify(tokenCookie, REFRESH_SECRET) as {
+      id: string;
+      tv?: number;
+    };
     const usuario = await Usuario.findById(payload.id);
     if (!usuario) return res.status(401).json({ mensaje: "Usuario no existe" });
 
@@ -131,8 +157,14 @@ export const refresh = async (req: Request, res: Response) => {
     }
 
     // Nuevo access + rotación de refresh
-    const token = generarToken({ id: usuario._id.toString(), rol: usuario.rol });
-    const newRefresh = generarRefreshToken({ id: usuario._id.toString(), tv: dbTV });
+    const token = generarToken({
+      id: usuario._id.toString(),
+      rol: usuario.rol,
+    });
+    const newRefresh = generarRefreshToken({
+      id: usuario._id.toString(),
+      tv: dbTV,
+    });
     setRefreshCookie(res, newRefresh);
 
     return res.json({ token }); // mismo nombre que en login

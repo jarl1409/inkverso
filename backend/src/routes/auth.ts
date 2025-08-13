@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import Joi from 'joi';
 
-import { registro, login, refresh } from '../controllers/authController';
+import { registro, login, refresh, logout } from '../controllers/authController';
 import { validar } from '../middlewares/validationMiddleware';
 
 const router = Router();
@@ -23,5 +23,6 @@ const schemaLogin = Joi.object({
 router.post('/registro', validar(schemaRegistro), registro);
 router.post('/login', validar(schemaLogin), login);
 router.post('/refresh', refresh)
+router.post("/logout", logout);
 
 export default router;

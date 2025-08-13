@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import FormLibro from "../../components/libros/FormLibro";
 import type { Book } from "../../types/Book";
-import api from "../../utils/api";
+import api from "../../utils/api.ts"
 
 
 

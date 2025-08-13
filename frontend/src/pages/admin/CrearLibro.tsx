@@ -4,7 +4,7 @@ import { BookOpenIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
 import FormLibro from "../../components/libros/FormLibro";
-import api from "../../utils/api";
+import api from "../../utils/api.ts"
 
 
 

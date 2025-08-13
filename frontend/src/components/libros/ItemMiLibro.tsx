@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useFormatter } from "../../context/FormatterContext";
-import api from "../../utils/api";
+import api from "../../utils/api.ts"
 import { PrivateRoutes } from "../../routes";
 import { getErrorMessage } from "../../utils/error";
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 
-import api from "../../utils/api";
+import api from "../../utils/api.ts"
 import { getErrorMessage } from "../../utils/error";
 
 interface Usuario {

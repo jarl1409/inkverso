@@ -34,11 +34,11 @@ export default function PublicLayout() {
       href: PrivateRoutes.usuarios, 
       Icon: UsersIcon 
     },
-    {
-      name: "Historial de Compras",
-      href: PrivateRoutes.historial,
-      Icon: ClockIcon,
-    },
+    // {
+    //   name: "Historial de Compras",
+    //   href: PrivateRoutes.historial,
+    //   Icon: ClockIcon,
+    // },
     { name: "Mis libros", 
       href: PrivateRoutes.misLibros, 
       Icon: BookOpenIcon 

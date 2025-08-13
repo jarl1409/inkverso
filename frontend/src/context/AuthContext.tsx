@@ -8,7 +8,7 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-
+import { useNavigate } from "react-router-dom";
 interface User {
   id: string;
   nombre: string;
@@ -21,22 +21,18 @@ interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
-  register: (data: {
-    nombre: string;
-    email: string;
-    password: string;
-  }) => Promise<void>;
+  register: (data: { nombre: string; email: string; password: string }) => Promise<void>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const navigate = useNavigate(); // ⬅️ nuevo
+
   const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem("token")
   );
-
-
   const [user, setUser] = useState<User | null>(() => {
     const stored = localStorage.getItem("user");
     return stored ? (JSON.parse(stored) as User) : null;
@@ -44,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const isAuthenticated = Boolean(token);
 
-  // token persistente  y establece encabezado predeterminado
+  // Persistencia de token y cabecera Authorization por defecto
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
@@ -55,18 +51,41 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [token]);
 
-  // Informacion de usuario persistente
+  // Persistencia de usuario
   useEffect(() => {
     if (user) localStorage.setItem("user", JSON.stringify(user));
     else localStorage.removeItem("user");
   }, [user]);
 
+  // ⬇️ Escucha eventos del interceptor: nuevo token y logout
+  useEffect(() => {
+    const onNewToken = (e: Event) => {
+      const detail = (e as CustomEvent<{ token: string }>).detail;
+      if (detail?.token) setToken(detail.token);
+    };
+
+    const onLogout = () => {
+      setToken(null);
+      setUser(null);
+      navigate("/login", { replace: true });
+    };
+
+    window.addEventListener("auth:token", onNewToken as EventListener);
+    window.addEventListener("auth:logout", onLogout);
+
+    return () => {
+      window.removeEventListener("auth:token", onNewToken as EventListener);
+      window.removeEventListener("auth:logout", onLogout);
+    };
+  }, [navigate]);
+  // ⬆️ fin listeners
+
   async function login(email: string, password: string) {
     try {
-      const res = await api.post<{ token: string; usuario: User }>(
-        "/auth/login",
-        { email, password }
-      );
+      const res = await api.post<{ token: string; usuario: User }>("/auth/login", {
+        email,
+        password,
+      });
       setToken(res.data.token);
       setUser(res.data.usuario);
     } catch (error: unknown) {
@@ -75,18 +94,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function register({
-    nombre,
-    email,
-    password,
-  }: {
-    nombre: string;
-    email: string;
-    password: string;
-  }) {
+  async function register({ nombre, email, password }: { nombre: string; email: string; password: string }) {
     try {
       await api.post("/auth/registro", { nombre, email, password });
-      // Después de registrarse exitosamente, inicie sesión para obtener el token
       await login(email, password);
     } catch (error: unknown) {
       const mensaje = getErrorMessage(error);
@@ -94,15 +104,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  function logout() {
+  async function logout() {
+  try {
+    // borra la cookie 'jid' en el backend con los mismos flags
+    await api.post("/auth/logout");
+  } catch {
+    // no pasa nada si falla; igual limpiamos cliente
+  } finally {
     setToken(null);
     setUser(null);
+    // si ya tienes listeners de auth:logout, también podrías emitir el evento:
+    // window.dispatchEvent(new CustomEvent("auth:logout"));
+    // pero con navigate aquí es suficiente:
+    // (asegúrate de tener useNavigate arriba en este provider)
+    navigate("/login", { replace: true });
   }
+}
+
 
   return (
-    <AuthContext.Provider
-      value={{ token, isAuthenticated, user, login, register, logout }}
-    >
+    <AuthContext.Provider value={{ token, isAuthenticated, user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -22,7 +22,6 @@ import UsuariosPage from "./pages/admin/Usuarios";
 
 export default function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path={PublicRoutes.index} element={<Index />} />
@@ -53,6 +52,6 @@ export default function App() {
           <Route path="checkout" element={<Pago />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    
   );
 }
