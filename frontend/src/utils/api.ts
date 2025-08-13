@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Marca local para evitar bucle de reintentos
-type ConfigWithRetry = axios.AxiosRequestConfig & { _retry?: boolean };
+type ConfigWithRetry = any & { _retry?: boolean };
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -10,12 +10,12 @@ const api = axios.create({
 });
 
 // Función helper para verificar si es un error de Axios
-const isAxiosError = (error: any): error is axios.AxiosError => {
+const isAxiosError = (error: any): boolean => {
   return error && error.isAxiosError === true;
 };
 
 // Inyecta el access token actual en cada request
-api.interceptors.request.use((config) => {
+api.interceptors.request.use((config: any) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers = { ...(config.headers ?? {}), Authorization: `Bearer ${token}` };
@@ -27,8 +27,8 @@ api.interceptors.request.use((config) => {
 let refreshPromise: Promise<string> | null = null;
 
 api.interceptors.response.use(
-  (res) => res,
-  async (error) => {
+  (res: any) => res,
+  async (error: any) => {
     if (!isAxiosError(error) || !error.response || !error.config) {
       return Promise.reject(error);
     }
@@ -49,7 +49,9 @@ api.interceptors.response.use(
             
             // 1) Actualiza YA defaults y storage (evita race conditions)
             localStorage.setItem("token", newToken);
-            api.defaults.headers.common.Authorization = `Bearer ${newToken}`;
+            if (api.defaults.headers.common) {
+              api.defaults.headers.common.Authorization = `Bearer ${newToken}`;
+            }
             
             // 2) Notifica al AuthContext para sincronizar estado
             window.dispatchEvent(new CustomEvent("auth:token", { detail: { token: newToken } }));
