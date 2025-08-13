@@ -1,13 +1,18 @@
 // src/utils/api.ts
-import axios, { isAxiosError, type InternalAxiosRequestConfig } from "axios";
+import axios from "axios";
 
-// Tipo local para marcar reintentos (sin augmentar axios)
-type ConfigWithRetry<D = unknown> = InternalAxiosRequestConfig<D> & { _retry?: boolean };
+// Marca local para evitar bucle de reintentos
+type ConfigWithRetry = axios.AxiosRequestConfig & { _retry?: boolean };
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true, // necesario para enviar/recibir la cookie 'jid'
 });
+
+// Función helper para verificar si es un error de Axios
+const isAxiosError = (error: any): error is axios.AxiosError => {
+  return error && error.isAxiosError === true;
+};
 
 // Inyecta el access token actual en cada request
 api.interceptors.request.use((config) => {
@@ -18,36 +23,37 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Serializa el refresh para evitar tormenta de peticiones
+// Evita tormenta de refresh: una sola llamada concurrente
 let refreshPromise: Promise<string> | null = null;
 
 api.interceptors.response.use(
   (res) => res,
   async (error) => {
-    // Si no es un error de axios, o no trae response/config, no intentamos refresh
     if (!isAxiosError(error) || !error.response || !error.config) {
       return Promise.reject(error);
     }
 
     const resp = error.response;
-    const original = error.config as ConfigWithRetry | undefined;
+    const original = error.config as ConfigWithRetry;
 
-    // Access expirado → intenta refrescar UNA sola vez y reintenta la request original
-    if (resp.status === 401 && original && !original._retry) {
+    // Access expirado → intenta refrescar UNA vez
+    if (resp.status === 401 && !original._retry) {
       original._retry = true;
+      
       try {
         if (!refreshPromise) {
+          // Hacemos el refresh una sola vez y compartimos la promesa
           refreshPromise = (async () => {
             const r = await api.post<{ token: string }>("/auth/refresh");
             const newToken = r.data.token;
-
-            // ACTUALIZA YA mismo los defaults y el storage
+            
+            // 1) Actualiza YA defaults y storage (evita race conditions)
             localStorage.setItem("token", newToken);
-            api.defaults.headers.common["Authorization"] = `Bearer ${newToken}`;
-
-            // Notifica al AuthContext para actualizar estado y storage
+            api.defaults.headers.common.Authorization = `Bearer ${newToken}`;
+            
+            // 2) Notifica al AuthContext para sincronizar estado
             window.dispatchEvent(new CustomEvent("auth:token", { detail: { token: newToken } }));
-
+            
             return newToken;
           })();
         }
@@ -55,11 +61,12 @@ api.interceptors.response.use(
         const newToken = await refreshPromise;
         refreshPromise = null;
 
+        // Reintenta la request original con el token nuevo
         original.headers = { ...(original.headers ?? {}), Authorization: `Bearer ${newToken}` };
-        return api(original); // reintenta la request original
+        return api(original);
       } catch (e) {
         refreshPromise = null;
-        // Refresh falló → cerrar sesión (el AuthContext navega a /login)
+        // Refresh falló → cerrar sesión; el AuthContext navega a /login
         window.dispatchEvent(new CustomEvent("auth:logout"));
         return Promise.reject(e);
       }

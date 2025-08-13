@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import {
   ArchiveBoxIcon,
   BookOpenIcon,
-  ClockIcon,
+  // ClockIcon,
   Cog6ToothIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
