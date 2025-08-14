@@ -78,7 +78,7 @@ api.interceptors.response.use(
         refreshPromise = null;
 
         // Detectar si es problema de cookies
-        if (e.response?.status === 401) {
+        if ((e as any)?.response?.status === 401) {
           console.warn("🍪 Posible bloqueo de cookies. Informa al usuario.");
           // Mostrar toast/modal explicando cómo habilitar cookies
         }
