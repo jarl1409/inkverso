@@ -18,7 +18,10 @@ const isAxiosError = (error: any): boolean => {
 api.interceptors.request.use((config: any) => {
   const token = localStorage.getItem("token");
   if (token) {
-    config.headers = { ...(config.headers ?? {}), Authorization: `Bearer ${token}` };
+    config.headers = {
+      ...(config.headers ?? {}),
+      Authorization: `Bearer ${token}`,
+    };
   }
   return config;
 });
@@ -39,23 +42,25 @@ api.interceptors.response.use(
     // Access expirado → intenta refrescar UNA vez
     if (resp.status === 401 && !original._retry) {
       original._retry = true;
-      
+
       try {
         if (!refreshPromise) {
           // Hacemos el refresh una sola vez y compartimos la promesa
           refreshPromise = (async () => {
             const r = await api.post<{ token: string }>("/auth/refresh");
             const newToken = r.data.token;
-            
+
             // 1) Actualiza YA defaults y storage (evita race conditions)
             localStorage.setItem("token", newToken);
             if (api.defaults.headers.common) {
               api.defaults.headers.common.Authorization = `Bearer ${newToken}`;
             }
-            
+
             // 2) Notifica al AuthContext para sincronizar estado
-            window.dispatchEvent(new CustomEvent("auth:token", { detail: { token: newToken } }));
-            
+            window.dispatchEvent(
+              new CustomEvent("auth:token", { detail: { token: newToken } })
+            );
+
             return newToken;
           })();
         }
@@ -64,11 +69,20 @@ api.interceptors.response.use(
         refreshPromise = null;
 
         // Reintenta la request original con el token nuevo
-        original.headers = { ...(original.headers ?? {}), Authorization: `Bearer ${newToken}` };
+        original.headers = {
+          ...(original.headers ?? {}),
+          Authorization: `Bearer ${newToken}`,
+        };
         return api(original);
       } catch (e) {
         refreshPromise = null;
-        // Refresh falló → cerrar sesión; el AuthContext navega a /login
+
+        // Detectar si es problema de cookies
+        if (e.response?.status === 401) {
+          console.warn("🍪 Posible bloqueo de cookies. Informa al usuario.");
+          // Mostrar toast/modal explicando cómo habilitar cookies
+        }
+
         window.dispatchEvent(new CustomEvent("auth:logout"));
         return Promise.reject(e);
       }
