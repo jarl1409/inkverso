@@ -9,7 +9,6 @@ import { PrivateRoutes } from "../../routes";
 import Spinner from "../../components/ui/Spinner";
 import { getErrorMessage } from "../../utils/error";
 
-
 export default function MisLibros() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
@@ -40,11 +39,21 @@ export default function MisLibros() {
         setOrders(ods);
       })
       .catch((err) => {
-        const mensaje = getErrorMessage(err)
-        setError( mensaje);
+        const mensaje = getErrorMessage(err);
+        setError(mensaje);
       })
       .finally(() => setLoading(false));
   }, []);
+
+  // Función para manejar la eliminación de libros UI
+  const handleBookDeleted = (bookId: string) => {
+    setOrders((prevOrders) => 
+      prevOrders.filter((order) => 
+        // Filtrar las órdenes que no contengan el libro eliminado
+        !order.books.some((book) => book.id === bookId)
+      )
+    );
+  };
 
   if (loading) return <Spinner />;
   if (error) return <div className="p-4 text-red-600">{error}</div>;
@@ -72,7 +81,7 @@ export default function MisLibros() {
         <h2 id="recent-heading" className="sr-only">
           Mis publicaciones
         </h2>
-        <ItemMiLibro orders={orders} />
+        <ItemMiLibro orders={orders} onBookDeleted={handleBookDeleted} />
       </section>
     </>
   );

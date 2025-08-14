@@ -28,14 +28,13 @@ export interface Order {
 
 interface ItemMiLibroProps {
   orders: Order[];
+  onBookDeleted: (bookId: string) => void;
 }
 
-export default function ItemMiLibro({ orders }: ItemMiLibroProps) {
+export default function ItemMiLibro({ orders, onBookDeleted }: ItemMiLibroProps) {
   const [submitting, setSubmitting] = useState(false);
   const formatter = useFormatter();
 
-  // console.log(bookId);
-  
   const eliminar = async (bookId: string) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar este libro?")) {
       return;
@@ -44,11 +43,13 @@ export default function ItemMiLibro({ orders }: ItemMiLibroProps) {
     try {
       // Llamada DELETE a /admin/libros/:id
       await api.delete(`/admin/libros/${bookId}`);
-      // Refrescar la página o volver a cargar la lista
-      window.location.reload();
+      // ✅ Notificar al padre que se eliminó el libro
+      onBookDeleted(bookId);
     } catch (err) {
-      const mensaje = getErrorMessage(err)
-      console.error(mensaje)
+      const mensaje = getErrorMessage(err);
+      console.error(mensaje);
+      // Podrías mostrar un toast o alerta aquí
+      alert(`Error al eliminar libro: ${mensaje}`);
     } finally {
       setSubmitting(false);
     }
