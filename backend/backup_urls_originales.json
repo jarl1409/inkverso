@@ -1,0 +1,162 @@
+[
+  {
+    "_id": "6880b0c8da3b0a8c15d8e710",
+    "titulo": "Cien años de soledad",
+    "imagenURL_original": "/uploads/1753264328230-CienAÃ±osDeSoledad.jpg"
+  },
+  {
+    "_id": "6880b229da3b0a8c15d8e72a",
+    "titulo": "El Principito",
+    "imagenURL_original": "/uploads/1753264681871-ElPrincipito.jpg"
+  },
+  {
+    "_id": "6880b2c8da3b0a8c15d8e742",
+    "titulo": "Orgullo y prejuicio",
+    "imagenURL_original": "/uploads/1753264840856-orgullo-y-prejuicio.jpg"
+  },
+  {
+    "_id": "6880b37dda3b0a8c15d8e752",
+    "titulo": "En busca del tiempo perdido",
+    "imagenURL_original": "/uploads/1753265021738-en-busca-del-tiempo-perdido-en-historie_MlMjS.jpg"
+  },
+  {
+    "_id": "6880b3adda3b0a8c15d8e758",
+    "titulo": "Fahrenheit 451",
+    "imagenURL_original": "/uploads/1753265069577-Fahrenheit 451.jpeg"
+  },
+  {
+    "_id": "6880b3f3da3b0a8c15d8e764",
+    "titulo": "Los pilares de la tierra",
+    "imagenURL_original": "/uploads/1753265139634-los-pilares-de-la-tierra-e1703939433489.jpg"
+  },
+  {
+    "_id": "6880b48cda3b0a8c15d8e770",
+    "titulo": "It (Eso)",
+    "imagenURL_original": "/uploads/1753265292492-it.jpg"
+  },
+  {
+    "_id": "6880b9740fe2ee54e7eac81f",
+    "titulo": "La carretera",
+    "imagenURL_original": "/uploads/1753266548452-La carretera.jpeg"
+  },
+  {
+    "_id": "6880b9f30fe2ee54e7eac82b",
+    "titulo": "El gran Gatsby",
+    "imagenURL_original": "/uploads/1753266675142-El gran Gatsby.jpeg"
+  },
+  {
+    "_id": "6880ba1f0fe2ee54e7eac82f",
+    "titulo": "Kafka en la orilla",
+    "imagenURL_original": "/uploads/1753266719530-Kafka en la orilla.jpeg"
+  },
+  {
+    "_id": "6880badc0fe2ee54e7eac83f",
+    "titulo": "Un mundo feliz",
+    "imagenURL_original": "/uploads/1753266908487-Un mundo feliz.webp"
+  },
+  {
+    "_id": "6870d19402f7ad0968cc5538",
+    "titulo": "Alicia en el país de las maravillas",
+    "imagenURL_original": "/uploads/1752224148052-Imagen-2.png"
+  },
+  {
+    "_id": "6880b183da3b0a8c15d8e716",
+    "titulo": "Don Quijote de la Mancha",
+    "imagenURL_original": "/uploads/1753264515662-Don-Quijote.jpg"
+  },
+  {
+    "_id": "6880b203da3b0a8c15d8e724",
+    "titulo": "1984",
+    "imagenURL_original": "/uploads/1753264643260-1984.jpeg"
+  },
+  {
+    "_id": "6880b259da3b0a8c15d8e730",
+    "titulo": "La sombra del viento",
+    "imagenURL_original": "/uploads/1753264729180-LaSombraDelViento.jpeg"
+  },
+  {
+    "_id": "6880b2a7da3b0a8c15d8e73c",
+    "titulo": "Educated (Una educación)",
+    "imagenURL_original": "/uploads/1753264807114-UnaEducacion.jpg"
+  },
+  {
+    "_id": "6880b515da3b0a8c15d8e77c",
+    "titulo": "Pensar rápido, pensar despacio",
+    "imagenURL_original": "/uploads/1753265429637-D_NQ_NP_838144-MLU77635972931_072024-O.webp"
+  },
+  {
+    "_id": "6880b9960fe2ee54e7eac823",
+    "titulo": "Matar a un ruiseñor",
+    "imagenURL_original": "/uploads/1753266582774-Matar a un ruiseÃ±or.jpg"
+  },
+  {
+    "_id": "6880ba630fe2ee54e7eac833",
+    "titulo": "Cuentos completos",
+    "imagenURL_original": "/uploads/1753266787316-CuentosCompletos.jpeg"
+  },
+  {
+    "_id": "6880bab90fe2ee54e7eac83b",
+    "titulo": "La insoportable levedad del ser",
+    "imagenURL_original": "/uploads/1753266873461-La insoportable levedad del ser.jpeg"
+  },
+  {
+    "_id": "6870d0d802f7ad0968cc5526",
+    "titulo": "Cuentos de los hermanos Green",
+    "imagenURL_original": "/uploads/1752223960836-Imagen.png"
+  },
+  {
+    "_id": "6880b431da3b0a8c15d8e76a",
+    "titulo": "El nombre del viento",
+    "imagenURL_original": "/uploads/1753265201084-El nombre del viento.jpeg"
+  },
+  {
+    "_id": "6880b4d0da3b0a8c15d8e776",
+    "titulo": "La chica del tren",
+    "imagenURL_original": "/uploads/1753265360274-Portada---LA-CHICA-DEL-TREN.webp"
+  },
+  {
+    "_id": "6880b9cc0fe2ee54e7eac827",
+    "titulo": "La peste",
+    "imagenURL_original": "/uploads/1753266636213-La peste.png"
+  },
+  {
+    "_id": "6880ba8a0fe2ee54e7eac837",
+    "titulo": "El hombre en busca de sentido",
+    "imagenURL_original": "/uploads/1753266826630-El hombre en busca de sentido.webp"
+  },
+  {
+    "_id": "6880bb080fe2ee54e7eac843",
+    "titulo": "Drácula",
+    "imagenURL_original": "/uploads/1753266952729-DrÃ¡cula.jpeg"
+  },
+  {
+    "_id": "6880b285da3b0a8c15d8e736",
+    "titulo": "Sapiens: De animales a dioses",
+    "imagenURL_original": "/uploads/1753264773644-de-animales-a-dioses_e5lQj.jpg"
+  },
+  {
+    "_id": "6880b342da3b0a8c15d8e74c",
+    "titulo": "Crimen y castigo",
+    "imagenURL_original": "/uploads/1753264962933-9788437614038-crimen-y-castigo.jpg"
+  },
+  {
+    "_id": "6880b3d8da3b0a8c15d8e75e",
+    "titulo": "El alquimista",
+    "imagenURL_original": "/uploads/1753265112003-El alquimista.jpeg"
+  },
+  {
+    "_id": "6880b71272662ef5b9c5ec68",
+    "titulo": "El código Da Vinci",
+    "imagenURL_original": "/uploads/1753265938417-El cÃ³digo Da Vinci.jpeg"
+  },
+  {
+    "_id": "6880b9350fe2ee54e7eac81b",
+    "titulo": "Los juegos del hambre",
+    "imagenURL_original": "/uploads/1753266485653-los-juegos-del-hambre-1-los-juegos-del-hambre.jpg"
+  },
+  {
+    "_id": "6880bb500fe2ee54e7eac847",
+    "titulo": "El extranjero",
+    "imagenURL_original": "/uploads/1753267024520-el-extranjero.jpg"
+  }
+]
